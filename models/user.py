@@ -1,31 +1,32 @@
-from models.__init__ import conn,cursor,sqlite3
-
+from models.__init__ import conn, cursor
 
 class User:
     def __init__(self, id, username, email):
         self.id = id
         self.username = username
         self.email = email
-        
 
-    @staticmethod
-    def create(username, email):
-        from models.__init__ import cursor,conn
-        
+    @classmethod
+    def create(cls, username, email):
         cursor.execute('INSERT INTO users (username, email) VALUES (?, ?)', (username, email))
         conn.commit()
-        
-        user_id = cursor.lastrowid
-        conn.close()
-        return user_id
+        return cursor.lastrowid
 
-    @staticmethod
-    def get_all():
-        from models.__init__ import cursor,conn
-        
+    @classmethod
+    def get_all(cls):
         cursor.execute('SELECT * FROM users')
         rows = cursor.fetchall()
-        
-        users = [User(row[0], row[1], row[2]) for row in rows]
-        conn.close()
-        return users
+        return [User(row[0], row[1], row[2]) for row in rows]
+
+    @classmethod
+    def find_by_id(cls, user_id):
+        cursor.execute('SELECT * FROM users WHERE id = ?', (user_id,))
+        row = cursor.fetchone()
+        if row:
+            return User(row[0], row[1], row[2])
+        return None
+
+    @classmethod
+    def delete(cls, user_id):
+        cursor.execute('DELETE FROM users WHERE id = ?', (user_id,))
+        conn.commit()
