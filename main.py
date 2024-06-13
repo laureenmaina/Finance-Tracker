@@ -1,5 +1,9 @@
-from models import create_tables, User, Income, Expense, SavingGoal
-from datetime import datetime,date
+from models.user import User
+from models.income import Income
+from models.expense import Expense
+from models.saving_goal import SavingGoal
+from datetime import datetime
+from models.setup import create_tables
 
 def main():
     # Initialize the database and create tables
