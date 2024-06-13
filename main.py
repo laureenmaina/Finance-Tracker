@@ -6,17 +6,23 @@ from datetime import datetime
 from models.setup import create_tables
 
 def main():
-    # Initialize the database and create tables
+  
     create_tables()
 
     # Collect user input
-    username = input("Enter User's name: ")
-    email = input("Enter User's email: ")
+    username = str(input("Enter User's name: "))
+    email = str(input("Enter User's email: "))
     income_amount = float(input("Enter your income: "))
     expense_amount = float(input("Enter your expense: "))
     saving_goal_amount = float(input("Enter your saving goal: "))
     saving_goal_target_date = input("Enter saving goal target date (YYYY-MM-DD): ")
-    saving_goal_description = input("Enter saving goal description: ")
+    saving_goal_description = str(input("Enter saving goal description: "))
+
+    if not username.strip():  # Check if username is empty 
+        raise ValueError("Username cannot be empty")
+    
+    if not isinstance(username, str):
+        raise ValueError("Username must be a string")
 
     # Validate the target date
     try:
@@ -34,15 +40,15 @@ def main():
     # Validate and create expense
     try:
         Expense.create(amount=expense_amount, user_id=user_id)
-    except ValueError as e:
-        print(f"Error: {e}")
+    except ValueError as error:
+        print(f"Error: {error}")
         return
 
     # Create and add saving goal
     try:
         SavingGoal.create(amount=saving_goal_amount, user_id=user_id, target_date=saving_goal_target_date, description=saving_goal_description)
-    except ValueError as e:
-        print(f"Error: {e}")
+    except ValueError as error:
+        print(f"Error: {error}")
         return
 
     # Query the database for inserted records
