@@ -22,6 +22,7 @@ class User:
     def find_by_id(cls, user_id):
         cursor.execute('SELECT * FROM users WHERE id = ?', (user_id,))
         row = cursor.fetchone()
+        
         if row:
             return User(row[0], row[1], row[2])
         return None

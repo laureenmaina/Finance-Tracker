@@ -10,8 +10,10 @@ class Income:
 
     @classmethod
     def create(cls, amount, user_id, date=None):
+
         if date is None:
             date = datetime.now().strftime('%Y-%m-%d')
+
         cursor.execute('INSERT INTO incomes (amount, date, user_id) VALUES (?, ?, ?)', (amount, date, user_id))
         conn.commit()
         return cursor.lastrowid
@@ -26,6 +28,7 @@ class Income:
     def find_by_id(cls, income_id):
         cursor.execute('SELECT * FROM incomes WHERE id = ?', (income_id,))
         row = cursor.fetchone()
+        
         if row:
             return Income(row[0], row[1], row[2], row[3])
         return None

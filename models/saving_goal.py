@@ -11,8 +11,10 @@ class SavingGoal:
 
     @classmethod
     def create(cls, amount, user_id, target_date, description):
+
         if datetime.strptime(target_date, '%Y-%m-%d').date() < date.today():
             raise ValueError("Saving goal target date must be in the future.")
+        
         cursor.execute('INSERT INTO saving_goals (amount, target_date, description, user_id) VALUES (?, ?, ?, ?)', 
                        (amount, target_date, description, user_id))
         conn.commit()
@@ -28,6 +30,7 @@ class SavingGoal:
     def find_by_id(cls, saving_goal_id):
         cursor.execute('SELECT * FROM saving_goals WHERE id = ?', (saving_goal_id,))
         row = cursor.fetchone()
+        
         if row:
             return SavingGoal(row[0], row[1], row[2], row[3], row[4])
         return None
