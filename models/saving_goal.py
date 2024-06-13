@@ -16,8 +16,7 @@ class SavingGoal:
         if datetime.strptime(target_date, '%Y-%m-%d').date() < date.today():
             raise ValueError("Saving goal target date must be in the future.")
 
-        conn = sqlite3.connect('finance.db')
-        cursor = conn.cursor()
+        from models.__init__ import cursor,conn
         
         cursor.execute('INSERT INTO saving_goals (amount, target_date, description, user_id) VALUES (?, ?, ?, ?)', 
                        (amount, target_date, description, user_id))
@@ -29,8 +28,7 @@ class SavingGoal:
 
     @staticmethod
     def get_all():
-        conn = sqlite3.connect('finance.db')
-        cursor = conn.cursor()
+        from models.__init__ import cursor,conn
         
         cursor.execute('SELECT * FROM saving_goals')
         rows = cursor.fetchall()

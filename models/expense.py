@@ -11,9 +11,8 @@ class Expense:
 
     @staticmethod
     def create(amount, user_id, date=datetime.now().strftime('%Y-%m-%d')):
-        conn = sqlite3.connect('finance.db')
-        cursor = conn.cursor()
-        
+        from models.__init__ import cursor,conn
+    
         cursor.execute('SELECT SUM(amount) FROM incomes WHERE user_id = ?', (user_id,))
         total_income = cursor.fetchone()[0] or 0
 
@@ -29,8 +28,7 @@ class Expense:
 
     @staticmethod
     def get_all():
-        conn = sqlite3.connect('finance.db')
-        cursor = conn.cursor()
+        from models.__init__ import cursor,conn
         
         cursor.execute('SELECT * FROM expenses')
         rows = cursor.fetchall()

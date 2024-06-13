@@ -11,8 +11,7 @@ class Income:
 
     @staticmethod
     def create(amount, user_id, date=datetime.now().strftime('%Y-%m-%d')):
-        conn = sqlite3.connect('finance.db')
-        cursor = conn.cursor()
+        from models.__init__ import cursor,conn
         
         cursor.execute('INSERT INTO incomes (amount, date, user_id) VALUES (?, ?, ?)', (amount, date, user_id))
         conn.commit()
@@ -23,8 +22,7 @@ class Income:
 
     @staticmethod
     def get_all():
-        conn = sqlite3.connect('finance.db')
-        cursor = conn.cursor()
+        from models.__init__ import cursor,conn
         
         cursor.execute('SELECT * FROM incomes')
         rows = cursor.fetchall()

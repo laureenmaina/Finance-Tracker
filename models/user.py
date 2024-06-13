@@ -6,11 +6,11 @@ class User:
         self.id = id
         self.username = username
         self.email = email
+        
 
     @staticmethod
     def create(username, email):
-        conn = sqlite3.connect('finance.db')
-        cursor = conn.cursor()
+        from models.__init__ import cursor,conn
         
         cursor.execute('INSERT INTO users (username, email) VALUES (?, ?)', (username, email))
         conn.commit()
@@ -21,8 +21,7 @@ class User:
 
     @staticmethod
     def get_all():
-        conn = sqlite3.connect('finance.db')
-        cursor = conn.cursor()
+        from models.__init__ import cursor,conn
         
         cursor.execute('SELECT * FROM users')
         rows = cursor.fetchall()
