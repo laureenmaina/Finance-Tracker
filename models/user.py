@@ -9,13 +9,14 @@ class User:
 
     @classmethod
     def create(cls, username, email):
+        
         cursor.execute('INSERT INTO users (username, email) VALUES (?, ?)', (username, email))
         conn.commit()
         return cursor.lastrowid
 
     @classmethod
     def get_all(cls):
-        
+
         cursor.execute('SELECT * FROM users')
         rows = cursor.fetchall()
         return [User(row[0], row[1], row[2]) for row in rows]
