@@ -1,6 +1,7 @@
 from models.__init__ import conn, cursor
 
 class User:
+    
     def __init__(self, id, username, email):
         self.id = id
         self.username = username
