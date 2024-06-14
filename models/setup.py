@@ -1,6 +1,7 @@
 from models.__init__ import conn, cursor
 
 def create_tables():
+    
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
