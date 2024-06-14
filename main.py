@@ -8,7 +8,6 @@ from models.setup import create_tables
 def main():
   
     create_tables()
-
     # Collect user input
     username = str(input("Enter User's name: "))
     email = str(input("Enter User's email: "))
@@ -23,6 +22,7 @@ def main():
     
     if not isinstance(username, str):
         raise ValueError("Username must be a string")
+
 
     # Validate the target date
     try:
@@ -60,6 +60,7 @@ def main():
     incomes = Income.get_all()
     expenses = Expense.get_all()
     saving_goals = SavingGoal.get_all()
+    
 
     # Display results
     print("\nUsers:")
