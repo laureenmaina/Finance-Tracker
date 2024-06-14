@@ -20,12 +20,14 @@ class Income:
 
     @classmethod
     def get_all(cls):
+        
         cursor.execute('SELECT * FROM incomes')
         rows = cursor.fetchall()
         return [Income(row[0], row[1], row[2], row[3]) for row in rows]
 
     @classmethod
     def find_by_id(cls, income_id):
+
         cursor.execute('SELECT * FROM incomes WHERE id = ?', (income_id,))
         row = cursor.fetchone()
         
