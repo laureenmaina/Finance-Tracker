@@ -1,4 +1,5 @@
 Finance Management System
+
 Project Overview
 The Finance Management System is a Python-based application that helps users manage their finances by tracking their incomes, expenses, and saving goals. The application uses SQLite as the database to store user information, income records, expense records, and saving goals. The database operations are performed using Python's sqlite3 module.
 

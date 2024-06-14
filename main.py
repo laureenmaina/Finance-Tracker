@@ -32,6 +32,7 @@ def main():
         print("Error: Invalid date format.")
         return
 
+
     # Create and add user
     user_id = User.create(username=username, email=email)
 
