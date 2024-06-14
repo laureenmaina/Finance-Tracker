@@ -15,7 +15,6 @@ class User:
 
     @classmethod
     def get_all(cls):
-        
         cursor.execute('SELECT * FROM users')
         rows = cursor.fetchall()
         return [User(row[0], row[1], row[2]) for row in rows]
