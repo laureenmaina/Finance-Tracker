@@ -22,12 +22,14 @@ class SavingGoal:
 
     @classmethod
     def get_all(cls):
+        
         cursor.execute('SELECT * FROM saving_goals')
         rows = cursor.fetchall()
         return [SavingGoal(row[0], row[1], row[2], row[3], row[4]) for row in rows]
 
     @classmethod
     def find_by_id(cls, saving_goal_id):
+
         cursor.execute('SELECT * FROM saving_goals WHERE id = ?', (saving_goal_id,))
         row = cursor.fetchone()
         
