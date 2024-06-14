@@ -30,6 +30,5 @@ class User:
 
     @classmethod
     def delete(cls, user_id):
-        
         cursor.execute('DELETE FROM users WHERE id = ?', (user_id,))
         conn.commit()
