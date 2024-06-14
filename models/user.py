@@ -1,7 +1,7 @@
 from models.__init__ import conn, cursor
 
 class User:
-    
+
     def __init__(self, id, username, email):
         self.id = id
         self.username = username
@@ -15,6 +15,7 @@ class User:
 
     @classmethod
     def get_all(cls):
+        
         cursor.execute('SELECT * FROM users')
         rows = cursor.fetchall()
         return [User(row[0], row[1], row[2]) for row in rows]
