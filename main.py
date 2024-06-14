@@ -47,6 +47,7 @@ def main():
     # Create and add saving goal
     try:
         SavingGoal.create(amount=saving_goal_amount, user_id=user_id, target_date=saving_goal_target_date, description=saving_goal_description)
+        
     except ValueError as error:
         print(f"Error: {error}")
         return
