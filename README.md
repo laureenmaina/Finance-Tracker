@@ -1,46 +1,64 @@
-Finance Management System
+# Finance Management System
 
-Project Overview
-The Finance Management System is a Python-based application that helps users manage their finances by tracking their incomes, expenses, and saving goals. The application uses SQLite as the database to store user information, income records, expense records, and saving goals. The database operations are performed using Python's sqlite3 module.
+## Project Overview
 
-Features
-User Management: Add and retrieve user information.
-Income Management: Add and retrieve income records associated with users.
-Expense Management: Add and retrieve expense records associated with users, ensuring expenses do not exceed total income.
-Saving Goals: Add and retrieve saving goals associated with users, ensuring target dates are valid.
+The Finance Management System is a Python-based application designed to help users manage their finances by tracking incomes, expenses, and saving goals. The application utilizes SQLite as the backend database to store user information, income records, expense records, and saving goals. SQLAlchemy is used for ORM (Object-Relational Mapping) to interact with the SQLite database.
 
-Project Structure
-finance-management-system/
+## Features
+
+- **User Management**: Allows adding and retrieving user information.
+- **Income Management**: Enables adding and retrieving income records associated with users.
+- **Expense Management**: Facilitates adding and retrieving expense records associated with users, ensuring expenses do not exceed total income.
+- **Saving Goals**: Supports adding and retrieving saving goals associated with users, ensuring target dates are valid.
+
+## Project Structure
+
+Certainly! Based on the updates made to your Finance Management System, let's revise the README.md file to reflect the changes:
+
+markdown
+Copy code
+# Finance Management System
+
+## Project Overview
+
+The Finance Management System is a Python-based application designed to help users manage their finances by tracking incomes, expenses, and saving goals. The application utilizes SQLite as the backend database to store user information, income records, expense records, and saving goals. SQLAlchemy is used for ORM (Object-Relational Mapping) to interact with the SQLite database.
+
+## Features
+
+- **User Management**: Allows adding and retrieving user information.
+- **Income Management**: Enables adding and retrieving income records associated with users.
+- **Expense Management**: Facilitates adding and retrieving expense records associated with users, ensuring expenses do not exceed total income.
+- **Saving Goals**: Supports adding and retrieving saving goals associated with users, ensuring target dates are valid.
+
+
 │
-├── models/
-│   ├── __init__.py
-│   ├── setup.py
-│   ├── user.py
-│   ├── income.py
-│   ├── expense.py
-│   ├── saving_goal.py
-│
-├── main.py
-├── README.md
-└── requirements.txt
 
-Models
-User Model (models/user.py)
 
-Attributes: id, username, email
-Methods: create, get_all, find_by_id, delete
-Income Model (models/income.py)
 
-Attributes: id, amount, date, user_id
-Methods: create, get_all, find_by_id, delete
-Expense Model (models/expense.py)
+## Models
 
-Attributes: id, amount, date, user_id
-Methods: create, get_all, find_by_id, delete
-SavingGoal Model (models/saving_goal.py)
+### User Model
 
-Attributes: id, amount, target_date, description, user_id
-Methods: create, get_all, find_by_id, delete
-Main Script (main.py)
-This script initializes the database, collects user inputs, performs necessary validations, and interacts with the database using the defined models. It also prints out the stored records after performing the operations.
+- **Attributes**: id, username, email
+- **Methods**: create, get_all, find_by_id, delete
 
+### Income Model
+
+- **Attributes**: id, amount, date, user_id
+- **Methods**: create, get_all, find_by_id, delete
+
+### Expense Model 
+- **Attributes**: id, amount, date, user_id
+- **Methods**: create, get_all, find_by_id, delete
+
+### SavingGoal Model 
+
+- **Attributes**: id, amount, target_date, description, user_id
+- **Methods**: create, get_all, find_by_id, delete
+
+## Main Script (`cli.py`)
+
+The main script initializes the database, collects user inputs, performs necessary validations, and interacts with the database using the defined models. It provides functionalities such as creating users, managing incomes, expenses, and saving goals, and displaying stored records after performing operations.
+
+
+Data Persistence: Data entered through the application is stored persistently in the SQLite database (finance.db), ensuring data integrity and reliability
