@@ -22,7 +22,7 @@ class Expense(Base):
     __tablename__ = 'expenses'
     id = Column(Integer, primary_key=True)
     amount = Column(Float, nullable=False)
-    description = Column(String, nullable=False)  # Ensure this column is defined
+    description = Column(String, nullable=False) 
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     user = relationship("User", back_populates="expenses")
 
