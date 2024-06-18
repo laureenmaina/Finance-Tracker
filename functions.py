@@ -36,7 +36,11 @@ def create_income(amount, source, user_id):
 def create_saving_goal(amount, target_date, description, user_id):
     user = session.query(User).get(user_id)
     if not user:
-        raise ValueError("User not found")
+        raise ValueError(f"User with ID {user_id} does not exist.")
+    
+    new_saving_goal = SavingGoal(amount=amount, target_date=target_date, description=description, user_id=user_id)
+    session.add(new_saving_goal)
+    session.commit()
 
     # Ensure target date is not in the past
     if target_date < datetime.now().date():

@@ -23,7 +23,6 @@ class Expense(Base):
     id = Column(Integer, primary_key=True)
     amount = Column(Float, nullable=False)
     description = Column(String, nullable=False)
-    date = Column(Date, nullable=False) 
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     user = relationship("User", back_populates="expenses")
 
@@ -39,8 +38,10 @@ class SavingGoal(Base):
     __tablename__ = 'saving_goals'
     id = Column(Integer, primary_key=True)
     amount = Column(Float, nullable=False)
-    goal_name = Column(String, nullable=False)
+    target_date = Column(Date, nullable=False)
+    description = Column(String)
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     user = relationship("User", back_populates="saving_goals")
+
 
 Base.metadata.create_all(engine)

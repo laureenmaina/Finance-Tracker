@@ -83,13 +83,13 @@ def main():
             expenses = get_all_expenses()
             print("\nExpenses:")
             for expense in expenses:
-                print(f"ID: {expense.id}, Amount: {expense.amount}, Date: {expense.date}, User ID: {expense.user_id}")
+                print(f"ID: {expense.id}, Amount: {expense.amount}, User ID: {expense.user_id}")
 
         elif choice == '7':
             incomes = get_all_incomes()
             print("\nIncomes:")
             for income in incomes:
-                print(f"ID: {income.id}, Amount: {income.amount}, Date: {income.date}, User ID: {income.user_id}")
+                print(f"ID: {income.id}, Amount: {income.amount}, User ID: {income.user_id}")
 
         elif choice == '8':
             saving_goals = get_all_saving_goals()
