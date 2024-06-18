@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey
+from sqlalchemy import create_engine, Column, Integer,Date, String, Float, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
@@ -22,7 +22,8 @@ class Expense(Base):
     __tablename__ = 'expenses'
     id = Column(Integer, primary_key=True)
     amount = Column(Float, nullable=False)
-    description = Column(String, nullable=False) 
+    description = Column(String, nullable=False)
+    date = Column(Date, nullable=False) 
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     user = relationship("User", back_populates="expenses")
 
